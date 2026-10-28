@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation - NusaCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:20px}
+    .docs-card{border:1px solid var(--border-normal);border-radius:14px;background:var(--bg-white);padding:16px;box-shadow:var(--shadow-sm)}
+    .docs-card h3{font-size:14px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+    .docs-card h3 i{color:var(--primary);font-size:16px}
+    .docs-card p{font-size:13px;color:var(--text-muted);margin-bottom:8px;line-height:1.5}
+    .docs-card .cdn-link{display:block;background:#0f172a;color:#e2e8f0;border-radius:8px;padding:8px 10px;font-size:11px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;margin:6px 0;word-break:break-all}
+    .docs-code{background:#0f172a;border-radius:10px;padding:12px;margin:8px 0;overflow:auto}
+    .docs-code code{color:#e2e8f0;font-size:11px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;line-height:1.6;display:block;white-space:pre}
+    .docs-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:800;background:var(--primary-light);color:var(--primary);margin-right:4px}
+    body.dark-mode .docs-card{background:#1e293b}
+    body.dark-mode .cdn-link,body.dark-mode .docs-code{background:#020617;border-color:#334155}
+    .docs-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:800;background:var(--bg-panel);color:var(--text-muted);border:1px solid var(--border-normal)}
+    .docs-demo{background:var(--bg-panel);border-radius:10px;border:1px solid var(--border-normal);padding:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0}
+    .docs-demo-label{width:100%;display:block;font-size:10px;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+    .docs-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:12px}
+    .docs-table th,.docs-table td{padding:5px 8px;border-bottom:1px solid var(--border-light);text-align:left}
+    .docs-table th{font-size:10px;font-weight:800;color:var(--text-light);text-transform:uppercase}
+    .docs-table td code{font-size:11px}
+    body.dark-mode .docs-demo{background:#0f172a;border-color:#334155}
+    body.dark-mode .docs-table td{border-color:#1e293b}
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+
+          <div class="sidebar-logo">
+            <div class="brand-wrapper">
+              <div class="logo-icon">A</div>
+              <div class="brand-text"><div class="logo-text">NusaCore</div><div class="logo-sub">Complete Panel Kit</div></div>
+            </div>
+            <button id="sidebarToggle" class="btn btn-secondary btn-icon" title="Collapse sidebar"><i class="fa-solid fa-bars top-icon"></i></button>
+          </div>
+                <p class="menu-title">Main</p>
+      <nav>
+        <a class="nav-item" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span class="nav-text">Dashboard</span></a>
+        <a class="nav-item" href="users.html"><i class="fa-solid fa-users nav-icon"></i><span class="nav-text">User Management</span><span class="nav-pill">12</span></a>
+        <a class="nav-item" href="roles.html"><i class="fa-solid fa-shield-halved nav-icon"></i><span class="nav-text">Role &amp; Permission</span></a>
+        <a class="nav-item" href="products.html"><i class="fa-solid fa-boxes-stacked nav-icon"></i><span class="nav-text">Products / Catalog</span></a>
+        <a class="nav-item" href="orders.html"><i class="fa-solid fa-truck nav-icon"></i><span class="nav-text">Orders / Tickets</span></a>
+        <a class="nav-item" href="transactions.html"><i class="fa-solid fa-credit-card nav-icon"></i><span class="nav-text">Transactions</span></a>
+        <a class="nav-item" href="billing.html"><i class="fa-solid fa-wallet nav-icon"></i><span class="nav-text">Billing</span></a>
+        <a class="nav-item" href="advanced-forms.html"><i class="fa-solid fa-pen-to-square nav-icon"></i><span class="nav-text">Advanced Forms</span></a>
+        <a class="nav-item" href="datatables.html"><i class="fa-solid fa-table-list nav-icon"></i><span class="nav-text">DataTables</span></a>
+      </nav>
+      <p class="menu-title">Operational</p>
+      <nav>
+        <a class="nav-item" href="notifications.html"><i class="fa-solid fa-bell nav-icon"></i><span class="nav-text">Notifications</span><span class="nav-pill">5</span></a>
+        <a class="nav-item" href="file-manager.html"><i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">File Manager</span></a>
+        <a class="nav-item" href="reports.html"><i class="fa-solid fa-chart-line nav-icon"></i><span class="nav-text">Reports</span></a>
+        <a class="nav-item" href="audit.html"><i class="fa-solid fa-clipboard-list nav-icon"></i><span class="nav-text">Audit Log</span></a>
+      </nav>
+      <p class="menu-title">System</p>
+      <nav>
+        <a class="nav-item" href="settings.html"><i class="fa-solid fa-gear nav-icon"></i><span class="nav-text">Settings</span></a>
+        <a class="nav-item" href="profile.html"><i class="fa-solid fa-user-gear nav-icon"></i><span class="nav-text">Profile</span></a>
+        <a class="nav-item" href="api-integrations.html"><i class="fa-solid fa-plug nav-icon"></i><span class="nav-text">API &amp; Integrations</span></a>
+        <a class="nav-item active" href="docs.html"><i class="fa-solid fa-book nav-icon"></i><span class="nav-text">Docs</span></a>
+      </nav>
+      <p class="menu-title">Showcase</p>
+      <nav>
+        <a class="nav-item" href="components.html"><i class="fa-solid fa-layer-group nav-icon"></i><span class="nav-text">UI Components</span></a>
+        <a class="nav-item" href="auth.html"><i class="fa-solid fa-right-to-bracket nav-icon"></i><span class="nav-text">Auth Pages</span></a>
+        <a class="nav-item" href="states.html"><i class="fa-solid fa-spinner nav-icon"></i><span class="nav-text">Loading States</span></a>
+        <a class="nav-item" href="layouts.html"><i class="fa-solid fa-window-restore nav-icon"></i><span class="nav-text">Layout Variants</span></a>
+        <a class="nav-item" href="onboarding.html"><i class="fa-solid fa-route nav-icon"></i><span class="nav-text">Onboarding Wizard</span></a>
+        <a class="nav-item" href="error-pages.html"><i class="fa-solid fa-triangle-exclamation nav-icon"></i><span class="nav-text">Error Pages</span></a>
+      </nav>
+        </div>
+  </aside>
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <main class="main-wrapper">
+    <div class="main-container">
+      <header class="topbar">
+        <div class="flex items-center gap-3">
+          <button id="topbarToggle" class="btn btn-secondary btn-icon"><i class="fa-solid fa-bars top-icon"></i></button>
+          <div class="breadcrumb"><span>Admin</span><span>/</span><span class="current" id="breadcrumb-current">Documentation</span></div>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-secondary btn-icon hide-mobile" onclick="openCommandPalette()"><i class="fa-solid fa-magnifying-glass top-icon"></i></button>
+          <button class="btn btn-secondary theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fa-solid fa-moon top-icon" id="themeIcon"></i><span id="themeText">Dark</span></button>
+          <button class="btn btn-secondary btn-icon" onclick="goTo('page-notifications','Notifications')"><i class="fa-solid fa-bell top-icon"></i></button>
+          <div class="user-profile" onclick="goTo('page-profile','Profile')"><img src="https://ui-avatars.com/api/?name=Admin+User&background=2563eb&color=fff" alt="Admin"><span class="text-sm font-bold">Admin User</span></div>
+        </div>
+      </header>
+      <div class="inner-content">
+
+        <section id="page-docs" class="page-view active">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Documentation</h1>
+            <p class="page-desc">Panduan penggunaan third-party libraries yang terintegrasi di NusaCore.</p>
+          </div>
+        </div>
+
+        <div class="docs-grid">
+
+          <!-- ============ LAYOUT ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-layer-group"></i> Layout</h3>
+            <p>Struktur halaman: sidebar kiri, topbar header, dan main container dengan inner content.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;aside class="sidebar"&gt;
+  &lt;div class="sidebar-content"&gt;...&lt;/div&gt;
+  &lt;div class="sidebar-footer"&gt;...&lt;/div&gt;
+&lt;/aside&gt;
+
+&lt;main class="main-wrapper"&gt;
+  &lt;div class="main-container"&gt;
+    &lt;header class="topbar"&gt;...&lt;/header&gt;
+    &lt;div class="inner-content"&gt;
+      &lt;div class="page-head"&gt;
+        &lt;h1 class="page-title"&gt;Judul&lt;/h1&gt;
+        &lt;p class="page-desc"&gt;Deskripsi&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</code></div>
+            <p><strong>Collapsed sidebar:</strong> tambah class <code>.collapsed</code> ke <code>.sidebar</code>. Beralih via <code>sidebarToggle</code>.</p>
+            <p><strong>Mobile:</strong> <code>.sidebar-backdrop</code> untuk overlay. Sidebar otomatis <code>position:fixed</code> di HP.</p>
+          </div>
+
+          <!-- ============ BUTTONS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-square-up-right"></i> Buttons</h3>
+            <p>Tombol dengan class <code>.btn</code> + variant. Bisa <code>&lt;button&gt;</code> atau <code>&lt;a&gt;</code>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-demo">
+              <div class="docs-demo-label">Preview</div>
+              <button class="btn btn-primary">Primary</button>
+              <button class="btn btn-secondary">Secondary</button>
+              <button class="btn btn-success">Success</button>
+              <button class="btn btn-warning">Warning</button>
+              <button class="btn btn-danger">Danger</button>
+              <button class="btn btn-outline">Outline</button>
+              <button class="btn btn-primary btn-sm">Small</button>
+              <button class="btn btn-secondary btn-icon"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="docs-code"><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;Outline&lt;/button&gt;
+&lt;button class="btn btn-primary btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn-secondary btn-icon"&gt;
+  &lt;i class="fa-solid fa-plus"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></div>
+            <table class="docs-table">
+              <tr><th>Class</th><th>Guna</th></tr>
+              <tr><td><code>.btn</code></td><td>Base (wajib)</td></tr>
+              <tr><td><code>.btn-primary</code></td><td>Aksi utama</td></tr>
+              <tr><td><code>.btn-secondary</code></td><td>Aksi kedua</td></tr>
+              <tr><td><code>.btn-success</code></td><td>Simpan/sukses</td></tr>
+              <tr><td><code>.btn-warning</code></td><td>Peringatan</td></tr>
+              <tr><td><code>.btn-danger</code></td><td>Hapus/danger</td></tr>
+              <tr><td><code>.btn-outline</code></td><td>Outline primary</td></tr>
+              <tr><td><code>.btn-sm</code></td><td>Ukuran kecil</td></tr>
+              <tr><td><code>.btn-icon</code></td><td>Icon saja (34&times;34)</td></tr>
+            </table>
+          </div>
+
+          <!-- ============ BADGES ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-tags"></i> Badges</h3>
+            <p>Label status dengan <code>&lt;span class="badge"&gt;</code> + variant warna.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-demo">
+              <div class="docs-demo-label">Preview</div>
+              <span class="badge badge-primary">Primary</span>
+              <span class="badge badge-success">Success</span>
+              <span class="badge badge-warning">Pending</span>
+              <span class="badge badge-danger">Failed</span>
+              <span class="badge badge-gray">Draft</span>
+              <span class="badge badge-purple">Premium</span>
+            </div>
+            <div class="docs-code"><code>&lt;span class="badge badge-primary"&gt;Active&lt;/span&gt;
+&lt;span class="badge badge-success"&gt;Completed&lt;/span&gt;
+&lt;span class="badge badge-warning"&gt;Pending&lt;/span&gt;
+&lt;span class="badge badge-danger"&gt;Failed&lt;/span&gt;
+&lt;span class="badge badge-gray"&gt;Draft&lt;/span&gt;
+&lt;span class="badge badge-purple"&gt;Premium&lt;/span&gt;</code></div>
+            <table class="docs-table">
+              <tr><th>Class</th><th>Guna</th></tr>
+              <tr><td><code>.badge-primary</code></td><td>Aktif / default</td></tr>
+              <tr><td><code>.badge-success</code></td><td>Sukses / selesai</td></tr>
+              <tr><td><code>.badge-warning</code></td><td>Pending / warning</td></tr>
+              <tr><td><code>.badge-danger</code></td><td>Error / gagal</td></tr>
+              <tr><td><code>.badge-gray</code></td><td>Inactive / draft</td></tr>
+              <tr><td><code>.badge-purple</code></td><td>Premium / spesial</td></tr>
+            </table>
+          </div>
+
+          <!-- ============ CARDS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-credit-card"></i> Cards</h3>
+            <p>Wadah konten <code>.card</code> dengan header, body, dan footer opsional.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;Judul Card&lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    Konten utama...
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;button class="btn btn-secondary"&gt;Batal&lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;Simpan&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>Header</strong> <code>display:flex; justify-content:space-between</code> — bisa diisi <code>select</code> atau badge di kanan.</p>
+            <p><strong>Footer</strong> <code>justify-content:flex-end</code> — tempat tombol aksi.</p>
+          </div>
+
+          <!-- ============ STAT CARDS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-chart-simple"></i> Stat Cards</h3>
+            <p>Kartu metrik untuk dashboard: icon, judul, value, dan trend.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-demo" style="flex-direction:column;gap:10px">
+              <div class="docs-demo-label">Preview</div>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
+                <div class="stat-card" style="flex:1;min-width:140px">
+                  <div class="stat-header">
+                    <div><div class="stat-title">Total User</div><div class="stat-value">12.450</div></div>
+                    <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+                  </div>
+                  <div class="stat-trend"><span class="trend-up">&#9650; 15%</span> vs bulan lalu</div>
+                </div>
+                <div class="stat-card" style="flex:1;min-width:140px">
+                  <div class="stat-header">
+                    <div><div class="stat-title">Revenue</div><div class="stat-value">Rp 45jt</div></div>
+                    <div class="stat-icon green"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                  </div>
+                  <div class="stat-trend"><span class="trend-up">&#9650; 8,2%</span> vs bulan lalu</div>
+                </div>
+              </div>
+            </div>
+            <div class="docs-code"><code>&lt;div class="stat-card"&gt;
+  &lt;div class="stat-header"&gt;
+    &lt;div&gt;
+      &lt;div class="stat-title"&gt;Total User&lt;/div&gt;
+      &lt;div class="stat-value"&gt;12.450&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stat-icon blue"&gt;
+      &lt;i class="fa-solid fa-users"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="stat-trend"&gt;
+    &lt;span class="trend-up"&gt;&amp;#9650; 15%&lt;/span&gt; vs bulan lalu
+  &lt;/div&gt;
+&lt;/div&gt;</code></div>
+            <table class="docs-table">
+              <tr><th>Class</th><th>Warna icon</th></tr>
+              <tr><td><code>.stat-icon.blue</code></td><td>Biru (primary)</td></tr>
+              <tr><td><code>.stat-icon.green</code></td><td>Hijau (success)</td></tr>
+              <tr><td><code>.stat-icon.orange</code></td><td>Orange (warning)</td></tr>
+              <tr><td><code>.stat-icon.red</code></td><td>Merah (danger)</td></tr>
+              <tr><td><code>.stat-icon.purple</code></td><td>Ungu</td></tr>
+            </table>
+          </div>
+
+          <!-- ============ FORM ELEMENTS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-keyboard"></i> Form Elements</h3>
+            <p>Input, select, textarea, checkbox, radio, dan switch toggle — semua sudah di-custom.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <p><strong>Input / Select / Textarea:</strong></p>
+            <div class="docs-code"><code>&lt;div class="form-group"&gt;
+  &lt;label class="form-label"&gt;Nama&lt;/label&gt;
+  &lt;input class="form-control" placeholder="..."&gt;
+  &lt;p class="form-help"&gt;Pesan bantuan&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;select class="form-control"&gt;
+  &lt;option&gt;...&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;textarea class="form-control" rows="3"&gt;&lt;/textarea&gt;</code></div>
+            <p><strong>Custom Checkbox &amp; Radio:</strong></p>
+            <div class="docs-code"><code>&lt;label class="form-check"&gt;
+  &lt;input class="form-check-input" type="checkbox"&gt;
+  &lt;span class="form-check-label"&gt;Label&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;label class="form-check"&gt;
+  &lt;input class="form-check-input" type="radio" name="g"&gt;
+  &lt;span class="form-check-label"&gt;Radio&lt;/span&gt;
+&lt;/label&gt;</code></div>
+            <p><strong>Switch Toggle:</strong></p>
+            <div class="docs-code"><code>&lt;label class="switch"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;span class="slider"&gt;&lt;/span&gt;
+&lt;/label&gt;</code></div>
+            <p><strong>Focus:</strong> <code>.form-control</code> otomatis dapat <code>box-shadow</code> biru saat focus. Dark mode didukung penuh.</p>
+          </div>
+
+          <!-- ============ TABLES ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-table"></i> Tables</h3>
+            <p>Tabel dengan <code>.table</code> dalam <code>.table-responsive</code>. Mobile card view via <code>.table-card-view</code>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;div class="table-responsive"&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th&gt;Nama&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;John Doe&lt;/td&gt;
+        &lt;td&gt;
+          &lt;span class="badge badge-success"&gt;Active&lt;/span&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>Card view mobile:</strong> tambah <code>.table-card-view</code> ke <code>.table-responsive</code> agar tabel jadi kartu di HP. <code>data-label</code> di setiap <code>&lt;td&gt;</code> untuk judul field.</p>
+          </div>
+
+          <!-- ============ ALERTS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-circle-exclamation"></i> Alerts</h3>
+            <p>Notifikasi in-page dengan <code>.alert</code> + variant. Bisa ditutup via JS.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-demo" style="flex-direction:column;gap:6px">
+              <div class="docs-demo-label">Preview</div>
+              <div class="alert alert-success" style="margin:0;width:100%"><i class="fa-solid fa-check-circle"></i> Data berhasil disimpan.</div>
+              <div class="alert alert-info" style="margin:0;width:100%"><i class="fa-solid fa-circle-info"></i> Maintenance pukul 02.00 WIB.</div>
+              <div class="alert alert-warning" style="margin:0;width:100%"><i class="fa-solid fa-triangle-exclamation"></i> Storage hampir penuh.</div>
+              <div class="alert alert-danger" style="margin:0;width:100%"><i class="fa-solid fa-circle-xmark"></i> Koneksi database gagal.</div>
+            </div>
+            <div class="docs-code"><code>&lt;div class="alert alert-success"&gt;
+  &lt;i class="fa-solid fa-check-circle"&gt;&lt;/i&gt; Sukses!
+&lt;/div&gt;
+&lt;div class="alert alert-info"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-warning"&gt;...&lt;/div&gt;
+&lt;div class="alert alert-danger"&gt;...&lt;/div&gt;</code></div>
+            <p>Tombol close: <code>&lt;span class="close-btn" onclick="this.parentElement.remove()"&gt;&lt;i class="fa-solid fa-xmark"&gt;&lt;/i&gt;&lt;/span&gt;</code> di dalam alert.</p>
+          </div>
+
+          <!-- ============ MODALS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-window-maximize"></i> Modals</h3>
+            <p>Dialog popup dengan backdrop, header, body, dan footer.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;div class="modal-backdrop" id="modalSaya"&gt;
+  &lt;div class="modal"&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h3&gt;Judul&lt;/h3&gt;
+      &lt;button onclick="closeModal('modalSaya')"&gt;
+        &lt;i class="fa-solid fa-xmark"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;Konten...&lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn btn-secondary"
+        onclick="closeModal('modalSaya')"&gt;Batal&lt;/button&gt;
+      &lt;button class="btn btn-primary"&gt;Simpan&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>JS:</strong> <code>openModal('id')</code> dan <code>closeModal('id')</code> di <code>app.js</code>. Cukup toggle class <code>.show</code> pada <code>.modal-backdrop</code>.</p>
+            <p><strong>Animasi:</strong> <code>@keyframes modalFadeIn</code> — scale .95 &rarr; 1 + fade.</p>
+          </div>
+
+          <!-- ============ TOASTS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-bullhorn"></i> Toasts</h3>
+            <p>Notifikasi popup pojok kanan bawah. Dua mode: simple <code>.toast</code> dan stacked <code>.toast-variant</code>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <p><strong>Simple (via JS):</strong></p>
+            <div class="docs-code"><code>// Panggil dari onclick / JS
+showToast('Pesan berhasil');
+showToast('Terjadi kesalahan');</code></div>
+            <p><strong>Variant (HTML manual):</strong></p>
+            <div class="docs-code"><code>&lt;div class="toast-variant toast-success"&gt;
+  &lt;i class="fa-solid fa-check-circle"&gt;&lt;/i&gt; Tersimpan!
+&lt;/div&gt;
+&lt;div class="toast-variant toast-error"&gt;
+  &lt;i class="fa-solid fa-circle-xmark"&gt;&lt;/i&gt; Gagal!
+&lt;/div&gt;
+&lt;div class="toast-variant toast-warning"&gt;
+  &lt;i class="fa-solid fa-triangle-exclamation"&gt;&lt;/i&gt; Perhatian!
+&lt;/div&gt;
+&lt;div class="toast-variant toast-info"&gt;
+  &lt;i class="fa-solid fa-circle-info"&gt;&lt;/i&gt; Info.
+&lt;/div&gt;</code></div>
+            <p><strong>Animasi:</strong> <code>@keyframes slideInToast</code> — slide dari kanan .3s.</p>
+          </div>
+
+          <!-- ============ TABS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-table-columns"></i> Tabs</h3>
+            <p>Navigasi tab horizontal: <code>.tabs</code> berisi <code>.tab-btn</code>. Aktif dengan class <code>.active</code>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;div class="tabs"&gt;
+  &lt;button class="tab-btn active"&gt;Tab 1&lt;/button&gt;
+  &lt;button class="tab-btn"&gt;Tab 2&lt;/button&gt;
+  &lt;button class="tab-btn"&gt;Tab 3&lt;/button&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>JS:</strong> toggle class <code>.active</code> antar tab-btn dan tampilkan <code>.tab-content</code> sesuai data-target. Lihat <code>components.html</code> untuk contoh JS.</p>
+          </div>
+
+          <!-- ============ PAGINATION ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-ellipsis"></i> Pagination</h3>
+            <p>Navigasi halaman dengan <code>.pagination</code> wrapper dan <code>.page-btn</code> untuk tiap nomor.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-demo">
+              <div class="docs-demo-label">Preview</div>
+              <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <button class="page-btn">...</button>
+              <button class="page-btn">10</button>
+              <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="docs-code"><code>&lt;div class="pagination"&gt;
+  &lt;button class="page-btn"&gt;
+    &lt;i class="fa-solid fa-chevron-left"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;button class="page-btn active"&gt;1&lt;/button&gt;
+  &lt;button class="page-btn"&gt;2&lt;/button&gt;
+  &lt;button class="page-btn"&gt;3&lt;/button&gt;
+  &lt;button class="page-btn"&gt;
+    &lt;i class="fa-solid fa-chevron-right"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></div>
+            <p>Gunakan <code>disabled</code> pada prev/next jika di awal/akhir halaman.</p>
+          </div>
+
+          <!-- ============ NAVIGATION ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-bars"></i> Navigation</h3>
+            <p>Item sidebar dengan <code>.nav-item</code>, <code>.nav-icon</code>, <code>.nav-text</code>, <code>.nav-pill</code>, dan <code>.nav-label</code>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;a class="nav-item active" href="..."&gt;
+  &lt;i class="fa-solid fa-users nav-icon"&gt;&lt;/i&gt;
+  &lt;span class="nav-text"&gt;Users&lt;/span&gt;
+  &lt;span class="nav-pill"&gt;12&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;div class="nav-label"&gt;Menu Utama&lt;/div&gt;</code></div>
+            <p><strong>States:</strong> <code>.active</code> untuk halaman aktif (warna biru). <code>.nav-pill</code> untuk counter. <code>.nav-label</code> untuk pemisah grup menu.</p>
+          </div>
+
+          <!-- ============ AVATARS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-user-circle"></i> Avatars</h3>
+            <p>Lingkaran inisial user dengan <code>.avatar</code>. Bisa diberi variant warna atau ukuran inline.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-demo">
+              <div class="docs-demo-label">Preview</div>
+              <div class="avatar" style="width:32px;height:32px;font-size:11px">AH</div>
+              <div class="avatar" style="width:40px;height:40px">JD</div>
+              <div class="avatar" style="width:48px;height:48px;font-size:16px">AK</div>
+              <div class="avatar green">JD</div>
+              <div class="avatar orange">AH</div>
+            </div>
+            <div class="docs-code"><code>&lt;div class="avatar"&gt;AH&lt;/div&gt;
+&lt;div class="avatar green"&gt;JD&lt;/div&gt;
+&lt;div class="avatar orange"&gt;AH&lt;/div&gt;
+
+// Ukuran kustom via inline
+&lt;div class="avatar"
+  style="width:48px;height:48px;font-size:16px"&gt;
+  AK
+&lt;/div&gt;</code></div>
+            <p>Default 32&times;32px. Varian: <code>.green</code>, <code>.orange</code>.</p>
+          </div>
+
+          <!-- ============ LOADING STATES ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-spinner"></i> Loading States</h3>
+            <p>Komponen untuk loading, data kosong, dan error. Lihat demo di <a href="states.html" style="color:var(--primary);font-weight:700">states.html</a>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <p><strong>Loading Spinner:</strong></p>
+            <div class="docs-code"><code>&lt;div class="loading-spinner"&gt;&lt;/div&gt;</code></div>
+            <p><strong>Skeleton Loading:</strong></p>
+            <div class="docs-code"><code>&lt;div class="skeleton skeleton-avatar"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-line"
+  style="width:70%"&gt;&lt;/div&gt;
+&lt;div class="skeleton skeleton-card"&gt;&lt;/div&gt;</code></div>
+            <p><strong>Empty State:</strong></p>
+            <div class="docs-code"><code>&lt;div class="empty-state"&gt;
+  &lt;i class="fa-solid fa-inbox icon-lg mb-3"&gt;&lt;/i&gt;
+  &lt;h3&gt;Data kosong&lt;/h3&gt;
+  &lt;p class="text-sm text-muted mt-2"&gt;
+    Belum ada data.&lt;/p&gt;
+  &lt;button class="btn btn-primary mt-2"&gt;
+    Tambah Data
+  &lt;/button&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>Animasi:</strong> spinner <code>@keyframes spin</code> .8s, skeleton <code>@keyframes skeleton</code> 1.35s (shimmer).</p>
+          </div>
+
+          <!-- ============ PROGRESS BAR ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-gauge-high"></i> Progress Bar</h3>
+            <p>Indikator progres dengan <code>.progress</code> (track) dan <code>.progress-fill</code> (bar).</p>
+            <span class="docs-badge">CSS</span>
+            <div class="docs-demo" style="flex-direction:column;gap:10px">
+              <div class="docs-demo-label">Preview</div>
+              <div style="width:100%">
+                <div class="flex justify-between mb-1"><span class="text-sm">Storage</span><span class="text-sm text-muted">78%</span></div>
+                <div class="progress"><div class="progress-fill" style="width:78%"></div></div>
+              </div>
+              <div style="width:100%">
+                <div class="flex justify-between mb-1"><span class="text-sm">Bandwidth</span><span class="text-sm text-muted">45%</span></div>
+                <div class="progress"><div class="progress-fill" style="width:45%;background:var(--warning)"></div></div>
+              </div>
+            </div>
+            <div class="docs-code"><code>&lt;div class="progress"&gt;
+  &lt;div class="progress-fill"
+    style="width:78%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+// Warna kustom via background
+&lt;div class="progress-fill"
+  style="width:45%;background:var(--warning)"&gt;
+&lt;/div&gt;</code></div>
+            <p>Default biru. Bisa diubah via <code>background</code> inline. CSS ada di <code>components.html</code> (page-specific).</p>
+          </div>
+
+          <!-- ============ UTILITIES ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-toolbox"></i> Utility Classes</h3>
+            <p>Helper untuk spacing, alignment, typography, dan layout grid.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <table class="docs-table">
+              <tr><th>Kategori</th><th>Class</th></tr>
+              <tr><td>Display</td><td><code>.flex</code> <code>.flex-col</code> <code>.hidden</code></td></tr>
+              <tr><td>Alignment</td><td><code>.items-center</code> <code>.justify-between</code> <code>.justify-end</code></td></tr>
+              <tr><td>Gap</td><td><code>.gap-1</code> (3px) &ndash; <code>.gap-4</code> (12px)</td></tr>
+              <tr><td>Margin</td><td><code>.mb-2</code> (6px) &ndash; <code>.mb-6</code> (18px), <code>.mt-2</code> (6px)</td></tr>
+              <tr><td>Text</td><td><code>.text-sm</code> <code>.text-xs</code> <code>.text-muted</code> <code>.font-medium</code> <code>.font-bold</code></td></tr>
+              <tr><td>Grid</td><td><code>.grid-2</code> <code>.grid-3</code> <code>.grid-4</code> <code>.grid-main</code></td></tr>
+              <tr><td>Icon</td><td><code>.icon-sm</code> (14px) <code>.icon-md</code> (18px) <code>.icon-lg</code> (22px)</td></tr>
+              <tr><td>Responsive</td><td><code>.hide-mobile</code> (sembunyi di HP)</td></tr>
+            </table>
+          </div>
+
+          <!-- ============ OTHER COMPONENTS ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-cubes"></i> Komponen Lain</h3>
+            <p>Komponen pelengkap untuk dashboard dan halaman fungsional.</p>
+            <span class="docs-badge">CSS</span>
+            <p><strong>Quick Action:</strong></p>
+            <div class="docs-code"><code>&lt;div class="quick-action"&gt;
+  &lt;div&gt;
+    &lt;b&gt;Tambah User&lt;/b&gt;
+    &lt;p class="text-xs text-muted"&gt;...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button class="btn btn-primary btn-sm"&gt;Buka&lt;/button&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>Activity List (timeline):</strong></p>
+            <div class="docs-code"><code>&lt;div class="activity-item"&gt;
+  &lt;div class="activity-dot"&gt;&lt;/div&gt;
+  &lt;div&gt;
+    &lt;p class="font-bold text-sm"&gt;Aktivitas&lt;/p&gt;
+    &lt;span class="text-xs text-muted"&gt;Waktu&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>Toolbar + Search:</strong></p>
+            <div class="docs-code"><code>&lt;div class="toolbar"&gt;
+  &lt;div class="search-box"&gt;
+    &lt;span&gt;&lt;i class="fa-solid fa-search"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input class="form-control" placeholder="Cari..."&gt;
+  &lt;/div&gt;
+  &lt;button class="btn btn-primary"&gt;+ Tambah&lt;/button&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>Error Preview:</strong> <code>.error-preview</code> + <code>.error-code</code> untuk halaman 404/403/500.</p>
+            <p><strong>Pricing Card:</strong> <code>.pricing-card</code> + <code>.featured</code>, <code>.pricing-price</code>, <code>.feature-list</code>.</p>
+            <p><strong>Notif Card:</strong> <code>.notif-card</code> untuk daftar notifikasi.</p>
+          </div>
+
+          <!-- ============ COMMAND PALETTE ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-magnifying-glass"></i> Command Palette</h3>
+            <p>Pencarian global via shortcut <kbd style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:11px;border:1px solid var(--border-normal)">Ctrl+K</kbd>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;div class="command-backdrop" id="commandPalette"&gt;
+  &lt;div class="command-modal"&gt;
+    &lt;div class="command-input"&gt;
+      &lt;i class="fa-solid fa-magnifying-glass"&gt;&lt;/i&gt;
+      &lt;input id="commandSearch" placeholder="Cari..."&gt;
+    &lt;/div&gt;
+    &lt;div class="command-list" id="commandList"&gt;&lt;/div&gt;
+    &lt;div class="command-footer"&gt;
+      &lt;span&gt;Ctrl+K buka/tutup&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></div>
+            <p><strong>JS:</strong> <code>openCommandPalette()</code>, <code>closeCommandPalette()</code>, <code>renderCommandItems()</code> di <code>app.js</code>. Data menu dari array <code>commandItems</code>.</p>
+          </div>
+
+          <!-- ============ DARK MODE ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-circle-half-stroke"></i> Dark Mode</h3>
+            <p>Tema gelap/terang via toggle class <code>body.dark-mode</code>.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-code"><code>&lt;button class="theme-toggle"
+  onclick="toggleTheme()"&gt;
+  &lt;i class="fa-solid fa-moon"&gt;&lt;/i&gt;
+  &lt;span&gt;Dark&lt;/span&gt;
+&lt;/button&gt;</code></div>
+            <p><strong>JS:</strong> <code>toggleTheme()</code> di <code>app.js</code> — toggle class, simpan ke localStorage (<code>admincore-theme</code>), update icon/teks.</p>
+            <p><strong>Sistem:</strong> semua komponen otomatis menyesuaikan karena pakai CSS custom properties (<code>--bg-white</code>, <code>--text-main</code>, <code>--border-normal</code>, dll).</p>
+          </div>
+
+          <!-- ============ COLOR SYSTEM ============ -->
+          <div class="docs-card">
+            <h3><i class="fa-solid fa-palette"></i> Color System</h3>
+            <p>CSS custom properties untuk palet warna konsisten di seluruh komponen.</p>
+            <span class="docs-badge">CSS</span> <span class="docs-tag">Framework</span>
+            <div class="docs-demo" style="flex-direction:column;gap:6px">
+              <div class="docs-demo-label">Core Colors</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:28px;height:28px;border-radius:6px;background:var(--primary)"></div><code class="text-xs">--primary</code></div>
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:28px;height:28px;border-radius:6px;background:var(--success)"></div><code class="text-xs">--success</code></div>
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:28px;height:28px;border-radius:6px;background:var(--danger)"></div><code class="text-xs">--danger</code></div>
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:28px;height:28px;border-radius:6px;background:var(--warning)"></div><code class="text-xs">--warning</code></div>
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:28px;height:28px;border-radius:6px;background:var(--info)"></div><code class="text-xs">--info</code></div>
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:28px;height:28px;border-radius:6px;background:var(--purple)"></div><code class="text-xs">--purple</code></div>
+              </div>
+            </div>
+            <div class="docs-code"><code>:root {
+  --primary: #2563eb;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #0ea5e9;
+  --purple: #7c3aed;
+  --bg-body: #eef2f7;
+  --bg-white: #fff;
+  --text-main: #111827;
+  --text-muted: #64748b;
+  --border-normal: #e2e8f0;
+  --radius: 14px;
+}</code></div>
+            <p>Semua komponen (badge, btn, alert, stat-icon) menggunakan warna dari variable ini dan menyesuaikan otomatis di dark mode.</p>
+          </div>
+
+        </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="command-backdrop" id="commandPalette"><div class="command-modal"><div class="command-input"><i class="fa-solid fa-magnifying-glass"></i><input id="commandSearch" placeholder="Cari menu, user, invoice, action..." oninput="renderCommandItems()"><button onclick="closeCommandPalette()"><i class="fa-solid fa-xmark"></i></button></div><div class="command-list" id="commandList"></div><div class="command-footer"><span>Shortcut: Ctrl + K</span><span>Enter untuk pilih • Esc untuk tutup</span></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

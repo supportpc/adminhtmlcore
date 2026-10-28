@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API & Integrations - NusaCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .api-key-display{background:var(--bg-panel);border:1px solid var(--border-normal);border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:13px}
+    .api-key-display .key{color:var(--text-muted);letter-spacing:.5px;user-select:all}
+    .integration-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:16px}
+    .integration-card{border:1px solid var(--border-normal);border-radius:14px;background:var(--bg-white);padding:16px;box-shadow:var(--shadow-sm);transition:.2s}
+    .integration-card:hover{border-color:var(--primary);box-shadow:var(--shadow-md)}
+    .integration-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+    .integration-icon.slack{background:#e8f5e9;color:#2e7d32}
+    .integration-icon.stripe{background:#e3f2fd;color:#1565c0}
+    .integration-icon.mailchimp{background:#fce4ec;color:#c62828}
+    .integration-icon.twilio{background:#fff3e0;color:#e65100}
+    .integration-icon.github{background:#f3e8ff;color:#7e22ce}
+    .integration-icon.docker{background:#e0f7fa;color:#00838f}
+    .integration-name{font-size:14px;font-weight:800;margin-bottom:2px}
+    .integration-desc{font-size:12px;color:var(--text-muted);margin-bottom:10px;line-height:1.4}
+    .integration-status{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700}
+    .integration-status .dot{width:7px;height:7px;border-radius:50%}
+    .integration-status .dot.green{background:var(--success)}
+    .integration-status .dot.gray{background:var(--text-light)}
+    .webhook-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border-light)}
+    .webhook-row:last-child{border-bottom:0}
+    .webhook-url{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;font-size:12px;color:var(--text-muted)}
+    body.dark-mode .integration-card{background:var(--bg-white)}
+    body.dark-mode .api-key-display{background:#0f172a;border-color:#334155}
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+<div class="sidebar-logo">
+        <div class="brand-wrapper">
+          <div class="logo-icon">A</div>
+          <div class="brand-text"><div class="logo-text">NusaCore</div><div class="logo-sub">Complete Panel Kit</div></div>
+        </div>
+        <button id="sidebarToggle" class="btn btn-secondary btn-icon" title="Collapse sidebar"><i class="fa-solid fa-bars top-icon"></i></button>
+      </div>
+      <p class="menu-title">Main</p>
+      <nav>
+        <a class="nav-item" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span class="nav-text">Dashboard</span></a>
+        <a class="nav-item" href="users.html"><i class="fa-solid fa-users nav-icon"></i><span class="nav-text">User Management</span><span class="nav-pill">12</span></a>
+        <a class="nav-item" href="roles.html"><i class="fa-solid fa-shield-halved nav-icon"></i><span class="nav-text">Role &amp; Permission</span></a>
+        <a class="nav-item" href="products.html"><i class="fa-solid fa-boxes-stacked nav-icon"></i><span class="nav-text">Products / Catalog</span></a>
+        <a class="nav-item" href="orders.html"><i class="fa-solid fa-truck nav-icon"></i><span class="nav-text">Orders / Tickets</span></a>
+        <a class="nav-item" href="transactions.html"><i class="fa-solid fa-credit-card nav-icon"></i><span class="nav-text">Transactions</span></a>
+        <a class="nav-item" href="billing.html"><i class="fa-solid fa-wallet nav-icon"></i><span class="nav-text">Billing</span></a>
+        <a class="nav-item" href="advanced-forms.html"><i class="fa-solid fa-pen-to-square nav-icon"></i><span class="nav-text">Advanced Forms</span></a>
+        <a class="nav-item" href="datatables.html"><i class="fa-solid fa-table-list nav-icon"></i><span class="nav-text">DataTables</span></a>
+      </nav>
+      <p class="menu-title">Operational</p>
+      <nav>
+        <a class="nav-item" href="notifications.html"><i class="fa-solid fa-bell nav-icon"></i><span class="nav-text">Notifications</span><span class="nav-pill">5</span></a>
+        <a class="nav-item" href="file-manager.html"><i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">File Manager</span></a>
+        <a class="nav-item" href="reports.html"><i class="fa-solid fa-chart-line nav-icon"></i><span class="nav-text">Reports</span></a>
+        <a class="nav-item" href="audit.html"><i class="fa-solid fa-clipboard-list nav-icon"></i><span class="nav-text">Audit Log</span></a>
+      </nav>
+      <p class="menu-title">System</p>
+      <nav>
+        <a class="nav-item" href="settings.html"><i class="fa-solid fa-gear nav-icon"></i><span class="nav-text">Settings</span></a>
+        <a class="nav-item" href="profile.html"><i class="fa-solid fa-user-gear nav-icon"></i><span class="nav-text">Profile</span></a>
+        <a class="nav-item active" href="api-integrations.html"><i class="fa-solid fa-plug nav-icon"></i><span class="nav-text">API &amp; Integrations</span></a>
+        <a class="nav-item" href="docs.html"><i class="fa-solid fa-book nav-icon"></i><span class="nav-text">Docs</span></a>
+      </nav>
+      <p class="menu-title">Showcase</p>
+      <nav>
+        <a class="nav-item" href="components.html"><i class="fa-solid fa-layer-group nav-icon"></i><span class="nav-text">UI Components</span></a>
+        <a class="nav-item" href="auth.html"><i class="fa-solid fa-right-to-bracket nav-icon"></i><span class="nav-text">Auth Pages</span></a>
+        <a class="nav-item" href="states.html"><i class="fa-solid fa-spinner nav-icon"></i><span class="nav-text">Loading States</span></a>
+        <a class="nav-item" href="layouts.html"><i class="fa-solid fa-window-restore nav-icon"></i><span class="nav-text">Layout Variants</span></a>
+        <a class="nav-item" href="onboarding.html"><i class="fa-solid fa-route nav-icon"></i><span class="nav-text">Onboarding Wizard</span></a>
+        <a class="nav-item" href="error-pages.html"><i class="fa-solid fa-triangle-exclamation nav-icon"></i><span class="nav-text">Error Pages</span></a>
+      </nav>
+    </div>
+  </aside>
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <main class="main-wrapper">
+    <div class="main-container">
+      <header class="topbar">
+        <div class="flex items-center gap-3">
+          <button id="topbarToggle" class="btn btn-secondary btn-icon"><i class="fa-solid fa-bars top-icon"></i></button>
+          <div class="breadcrumb"><span>Admin</span><span>/</span><span class="current" id="breadcrumb-current">API &amp; Integrations</span></div>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-secondary btn-icon hide-mobile" onclick="openCommandPalette()"><i class="fa-solid fa-magnifying-glass top-icon"></i></button>
+          <button class="btn btn-secondary theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fa-solid fa-moon top-icon" id="themeIcon"></i><span id="themeText">Dark</span></button>
+          <button class="btn btn-secondary btn-icon" onclick="goTo('page-notifications','Notifications')"><i class="fa-solid fa-bell top-icon"></i></button>
+          <div class="user-profile" onclick="goTo('page-profile','Profile')"><img src="https://ui-avatars.com/api/?name=Admin+User&background=2563eb&color=fff" alt="Admin"><span class="text-sm font-bold">Admin User</span></div>
+        </div>
+      </header>
+      <div class="inner-content">
+<section id="page-api" class="page-view active">
+
+        <div class="page-head">
+          <div><h1 class="page-title">API &amp; Integrations</h1><p class="page-desc">Kelola API keys, webhook endpoints, dan integrasi layanan pihak ketiga.</p></div>
+          <button class="btn btn-primary" onclick="showToast('API key baru dibuat')">+ Generate Key</button>
+        </div>
+
+        <!-- API Keys -->
+        <div class="card">
+          <div class="card-header">API Keys <span class="badge badge-gray">2 active</span></div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Production Key</label>
+              <div class="api-key-display">
+                <span class="key">ac_live_••••••••••••••••a3f8</span>
+                <div class="flex gap-2">
+                  <button class="btn btn-secondary btn-sm" onclick="showToast('Key copied')"><i class="fa-solid fa-copy"></i> Copy</button>
+                  <button class="btn btn-danger btn-sm" onclick="showToast('Key revoked')">Revoke</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Development Key</label>
+              <div class="api-key-display">
+                <span class="key">ac_test_••••••••••••••••b2c4</span>
+                <div class="flex gap-2">
+                  <button class="btn btn-secondary btn-sm" onclick="showToast('Key copied')"><i class="fa-solid fa-copy"></i> Copy</button>
+                  <button class="btn btn-secondary btn-sm" onclick="showToast('Key regenerated')">Regenerate</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integrations -->
+        <div class="card">
+          <div class="card-header">Integrations <span class="badge badge-gray">6 tersedia</span></div>
+          <div class="card-body">
+            <div class="integration-grid">
+              <div class="integration-card">
+                <div class="integration-icon slack"><i class="fa-brands fa-slack"></i></div>
+                <div class="integration-name">Slack</div>
+                <div class="integration-desc">Notifikasi ke channel Slack untuk event tertentu.</div>
+                <div class="integration-status"><span class="dot green"></span> Connected</div>
+              </div>
+              <div class="integration-card">
+                <div class="integration-icon stripe"><i class="fa-brands fa-stripe-s"></i></div>
+                <div class="integration-name">Stripe</div>
+                <div class="integration-desc">Pembayaran kartu kredit & transfer via Stripe.</div>
+                <div class="integration-status"><span class="dot green"></span> Connected</div>
+              </div>
+              <div class="integration-card">
+                <div class="integration-icon mailchimp"><i class="fa-brands fa-mailchimp"></i></div>
+                <div class="integration-name">Mailchimp</div>
+                <div class="integration-desc">Sinkronisasi kontak dan campaign email.</div>
+                <div class="integration-status"><span class="dot gray"></span> Not Connected</div>
+              </div>
+              <div class="integration-card">
+                <div class="integration-icon twilio"><i class="fa-brands fa-twilio"></i></div>
+                <div class="integration-name">Twilio</div>
+                <div class="integration-desc">SMS & WhatsApp notification gateway.</div>
+                <div class="integration-status"><span class="dot green"></span> Connected</div>
+              </div>
+              <div class="integration-card">
+                <div class="integration-icon github"><i class="fa-brands fa-github"></i></div>
+                <div class="integration-name">GitHub</div>
+                <div class="integration-desc">Webhook deploy & activity logging.</div>
+                <div class="integration-status"><span class="dot gray"></span> Not Connected</div>
+              </div>
+              <div class="integration-card">
+                <div class="integration-icon docker"><i class="fa-brands fa-docker"></i></div>
+                <div class="integration-name">Docker</div>
+                <div class="integration-desc">Deploy container & monitor registry.</div>
+                <div class="integration-status"><span class="dot gray"></span> Not Connected</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Webhooks -->
+        <div class="card">
+          <div class="card-header">Webhook Endpoints <button class="btn btn-primary btn-sm" onclick="showToast('Webhook endpoint ditambahkan')">+ Tambah</button></div>
+          <div class="card-body">
+            <div class="webhook-row">
+              <div>
+                <b>Payment Success</b>
+                <div class="webhook-url">https://api.example.com/webhooks/payment/success</div>
+              </div>
+              <span class="badge badge-success">Active</span>
+            </div>
+            <div class="webhook-row">
+              <div>
+                <b>User Created</b>
+                <div class="webhook-url">https://api.example.com/webhooks/users/new</div>
+              </div>
+              <span class="badge badge-success">Active</span>
+            </div>
+            <div class="webhook-row">
+              <div>
+                <b>Order Shipped</b>
+                <div class="webhook-url">https://api.example.com/webhooks/orders/shipped</div>
+              </div>
+              <span class="badge badge-gray">Inactive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rate Limits -->
+        <div class="card">
+          <div class="card-header">Rate Limits</div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="stat-card">
+                <div class="stat-title">Requests / Menit</div>
+                <div class="stat-value" style="font-size:20px">60</div>
+                <div class="stat-trend">Batas: 1.000/menit</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">Hari Ini</div>
+                <div class="stat-value" style="font-size:20px">12.430</div>
+                <div class="stat-trend">Batas: 100.000/hari</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">Error Rate</div>
+                <div class="stat-value" style="font-size:20px;color:var(--success)">0.12%</div>
+                <div class="stat-trend">Threshold: 1%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <div class="command-backdrop" id="commandPalette"><div class="command-modal"><div class="command-input"><i class="fa-solid fa-magnifying-glass"></i><input id="commandSearch" placeholder="Cari menu, user, invoice, action..." oninput="renderCommandItems()"><button onclick="closeCommandPalette()"><i class="fa-solid fa-xmark"></i></button></div><div class="command-list" id="commandList"></div><div class="command-footer"><span>Shortcut: Ctrl + K</span><span>Enter untuk pilih • Esc untuk tutup</span></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

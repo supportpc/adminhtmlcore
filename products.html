@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products / Catalog - NusaCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:16px}
+    .product-grid.hidden{display:none}
+    .product-card{border:1px solid var(--border-normal);border-radius:14px;background:var(--bg-white);overflow:hidden;box-shadow:var(--shadow-sm);transition:.2s}
+    .product-card:hover{box-shadow:var(--shadow-md);border-color:var(--primary)}
+    .product-img{height:160px;background:var(--bg-panel);display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--text-light);border-bottom:1px solid var(--border-light)}
+    .product-body{padding:12px}
+    .product-name{font-size:14px;font-weight:800;margin-bottom:4px}
+    .product-sku{font-size:10px;color:var(--text-light);margin-bottom:6px}
+    .product-meta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .product-price{font-size:16px;font-weight:900;color:var(--primary)}
+    .product-stock{font-size:11px;font-weight:600}
+    .product-stock.low{color:var(--danger)}
+    .product-stock.ok{color:var(--success)}
+    .view-toggle{display:flex;gap:4px;background:var(--bg-panel);padding:3px;border-radius:8px}
+    .view-toggle button{padding:5px 8px;border-radius:6px;font-size:12px;font-weight:700;color:var(--text-muted);transition:.15s}
+    .view-toggle button.active{background:var(--bg-white);color:var(--text-main);box-shadow:var(--shadow-sm)}
+    .stat-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .stat-filters .stat-card{flex:1;min-width:120px;cursor:pointer;transition:.2s}
+    .stat-filters .stat-card.active{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-light)}
+    .stat-filters .stat-card .stat-value{font-size:18px}
+    body.dark-mode .product-card{background:var(--bg-white)}
+    body.dark-mode .product-img{background:#0f172a;border-color:#1e293b}
+    body.dark-mode .view-toggle{background:#0f172a}
+    body.dark-mode .view-toggle button.active{background:var(--bg-white)}
+    .table-list-view{display:none}
+    .table-list-view.active{display:table}
+
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+<div class="sidebar-logo">
+        <div class="brand-wrapper">
+          <div class="logo-icon">A</div>
+          <div class="brand-text"><div class="logo-text">NusaCore</div><div class="logo-sub">Complete Panel Kit</div></div>
+        </div>
+        <button id="sidebarToggle" class="btn btn-secondary btn-icon" title="Collapse sidebar"><i class="fa-solid fa-bars top-icon"></i></button>
+      </div>
+      <p class="menu-title">Main</p>
+      <nav>
+        <a class="nav-item" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span class="nav-text">Dashboard</span></a>
+        <a class="nav-item" href="users.html"><i class="fa-solid fa-users nav-icon"></i><span class="nav-text">User Management</span><span class="nav-pill">12</span></a>
+        <a class="nav-item" href="roles.html"><i class="fa-solid fa-shield-halved nav-icon"></i><span class="nav-text">Role &amp; Permission</span></a>
+        <a class="nav-item active" href="products.html"><i class="fa-solid fa-boxes-stacked nav-icon"></i><span class="nav-text">Products / Catalog</span></a>
+        <a class="nav-item" href="orders.html"><i class="fa-solid fa-truck nav-icon"></i><span class="nav-text">Orders / Tickets</span></a>
+        <a class="nav-item" href="transactions.html"><i class="fa-solid fa-credit-card nav-icon"></i><span class="nav-text">Transactions</span></a>
+        <a class="nav-item" href="billing.html"><i class="fa-solid fa-wallet nav-icon"></i><span class="nav-text">Billing</span></a>
+        <a class="nav-item" href="advanced-forms.html"><i class="fa-solid fa-pen-to-square nav-icon"></i><span class="nav-text">Advanced Forms</span></a>
+        <a class="nav-item" href="datatables.html"><i class="fa-solid fa-table-list nav-icon"></i><span class="nav-text">DataTables</span></a>
+      </nav>
+      <p class="menu-title">Operational</p>
+      <nav>
+        <a class="nav-item" href="notifications.html"><i class="fa-solid fa-bell nav-icon"></i><span class="nav-text">Notifications</span><span class="nav-pill">5</span></a>
+        <a class="nav-item" href="file-manager.html"><i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">File Manager</span></a>
+        <a class="nav-item" href="reports.html"><i class="fa-solid fa-chart-line nav-icon"></i><span class="nav-text">Reports</span></a>
+        <a class="nav-item" href="audit.html"><i class="fa-solid fa-clipboard-list nav-icon"></i><span class="nav-text">Audit Log</span></a>
+      </nav>
+      <p class="menu-title">System</p>
+      <nav>
+        <a class="nav-item" href="settings.html"><i class="fa-solid fa-gear nav-icon"></i><span class="nav-text">Settings</span></a>
+        <a class="nav-item" href="profile.html"><i class="fa-solid fa-user-gear nav-icon"></i><span class="nav-text">Profile</span></a>
+        <a class="nav-item" href="api-integrations.html"><i class="fa-solid fa-plug nav-icon"></i><span class="nav-text">API &amp; Integrations</span></a>
+        <a class="nav-item" href="docs.html"><i class="fa-solid fa-book nav-icon"></i><span class="nav-text">Docs</span></a>
+      </nav>
+      <p class="menu-title">Showcase</p>
+      <nav>
+        <a class="nav-item" href="components.html"><i class="fa-solid fa-layer-group nav-icon"></i><span class="nav-text">UI Components</span></a>
+        <a class="nav-item" href="auth.html"><i class="fa-solid fa-right-to-bracket nav-icon"></i><span class="nav-text">Auth Pages</span></a>
+        <a class="nav-item" href="states.html"><i class="fa-solid fa-spinner nav-icon"></i><span class="nav-text">Loading States</span></a>
+        <a class="nav-item" href="layouts.html"><i class="fa-solid fa-window-restore nav-icon"></i><span class="nav-text">Layout Variants</span></a>
+        <a class="nav-item" href="onboarding.html"><i class="fa-solid fa-route nav-icon"></i><span class="nav-text">Onboarding Wizard</span></a>
+        <a class="nav-item" href="error-pages.html"><i class="fa-solid fa-triangle-exclamation nav-icon"></i><span class="nav-text">Error Pages</span></a>
+      </nav>
+    </div>
+  </aside>
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <main class="main-wrapper">
+    <div class="main-container">
+      <header class="topbar">
+        <div class="flex items-center gap-3">
+          <button id="topbarToggle" class="btn btn-secondary btn-icon"><i class="fa-solid fa-bars top-icon"></i></button>
+          <div class="breadcrumb"><span>Admin</span><span>/</span><span class="current" id="breadcrumb-current">Products / Catalog</span></div>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-secondary btn-icon hide-mobile" onclick="openCommandPalette()"><i class="fa-solid fa-magnifying-glass top-icon"></i></button>
+          <button class="btn btn-secondary theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fa-solid fa-moon top-icon" id="themeIcon"></i><span id="themeText">Dark</span></button>
+          <button class="btn btn-secondary btn-icon" onclick="goTo('page-notifications','Notifications')"><i class="fa-solid fa-bell top-icon"></i></button>
+          <div class="user-profile" onclick="goTo('page-profile','Profile')"><img src="https://ui-avatars.com/api/?name=Admin+User&background=2563eb&color=fff" alt="Admin"><span class="text-sm font-bold">Admin User</span></div>
+        </div>
+      </header>
+      <div class="inner-content">
+<section id="page-products" class="page-view active">
+
+        <div class="page-head">
+          <div><h1 class="page-title">Products / Catalog</h1><p class="page-desc">Kelola katalog produk, stok, dan harga.</p></div>
+          <div class="flex gap-2">
+            <div class="view-toggle">
+              <button class="active" onclick="switchProductView('grid')" title="Grid view"><i class="fa-solid fa-grip"></i></button>
+              <button onclick="switchProductView('list')" title="List view"><i class="fa-solid fa-list"></i></button>
+            </div>
+            <button class="btn btn-primary" onclick="openProductModal()">+ Tambah Produk</button>
+          </div>
+        </div>
+
+        <div class="stat-filters">
+          <div class="stat-card active" onclick="filterProducts('all',this)">
+            <div class="stat-header">
+              <div><div class="stat-title">Semua</div><div class="stat-value">28</div></div>
+              <div class="stat-icon blue"><i class="fa-solid fa-box"></i></div>
+            </div>
+          </div>
+          <div class="stat-card" onclick="filterProducts('active',this)">
+            <div class="stat-header">
+              <div><div class="stat-title">Active</div><div class="stat-value">22</div></div>
+              <div class="stat-icon green"><i class="fa-solid fa-check-circle"></i></div>
+            </div>
+          </div>
+          <div class="stat-card" onclick="filterProducts('draft',this)">
+            <div class="stat-header">
+              <div><div class="stat-title">Draft</div><div class="stat-value">3</div></div>
+              <div class="stat-icon orange"><i class="fa-solid fa-pen"></i></div>
+            </div>
+          </div>
+          <div class="stat-card" onclick="filterProducts('low',this)">
+            <div class="stat-header">
+              <div><div class="stat-title">Stok Menipis</div><div class="stat-value">5</div></div>
+              <div class="stat-icon red"><i class="fa-solid fa-exclamation-triangle"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-box">
+            <span><i class="fa-solid fa-search"></i></span>
+            <input class="form-control" id="productSearch" placeholder="Cari produk..." oninput="searchProducts()">
+          </div>
+          <div class="flex gap-2">
+            <select class="form-control" style="width:140px" onchange="filterByCategory(this.value)">
+              <option value="">Semua Kategori</option>
+              <option>Elektronik</option>
+              <option>Fashion</option>
+              <option>Makanan</option>
+              <option>Aksesoris</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Grid View -->
+        <div class="product-grid" id="productGrid">
+          <div class="product-card" data-status="active" data-category="Elektronik">
+            <div class="product-img"><i class="fa-solid fa-headphones"></i></div>
+            <div class="product-body">
+              <div class="product-name">Wireless Headphone Pro</div>
+              <div class="product-sku">SKU: WHP-001</div>
+              <span class="badge badge-success">Active</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 899.000</span>
+                <span class="product-stock ok">Stok: 45</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-status="active" data-category="Elektronik">
+            <div class="product-img"><i class="fa-solid fa-keyboard"></i></div>
+            <div class="product-body">
+              <div class="product-name">Mechanical Keyboard RGB</div>
+              <div class="product-sku">SKU: MKB-002</div>
+              <span class="badge badge-success">Active</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 1.250.000</span>
+                <span class="product-stock ok">Stok: 28</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-status="active" data-category="Elektronik">
+            <div class="product-img"><i class="fa-solid fa-display"></i></div>
+            <div class="product-body">
+              <div class="product-name">Monitor 27" 4K IPS</div>
+              <div class="product-sku">SKU: MON-003</div>
+              <span class="badge badge-success">Active</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 4.500.000</span>
+                <span class="product-stock ok">Stok: 12</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-status="active" data-category="Aksesoris">
+            <div class="product-img"><i class="fa-solid fa-clock"></i></div>
+            <div class="product-body">
+              <div class="product-name">Smartwatch Series 5</div>
+              <div class="product-sku">SKU: SWT-004</div>
+              <span class="badge badge-success">Active</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 2.199.000</span>
+                <span class="product-stock low">Stok: 3</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-status="active" data-category="Fashion">
+            <div class="product-img"><i class="fa-solid fa-bag-shopping"></i></div>
+            <div class="product-body">
+              <div class="product-name">Ransel Premium Urban</div>
+              <div class="product-sku">SKU: BAG-005</div>
+              <span class="badge badge-success">Active</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 349.000</span>
+                <span class="product-stock ok">Stok: 67</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-status="active" data-category="Makanan">
+            <div class="product-img"><i class="fa-solid fa-mug-hot"></i></div>
+            <div class="product-body">
+              <div class="product-name">Coffee Beans Arabica</div>
+              <div class="product-sku">SKU: COF-006</div>
+              <span class="badge badge-success">Active</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 89.000</span>
+                <span class="product-stock ok">Stok: 120</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-status="active" data-category="Aksesoris">
+            <div class="product-img"><i class="fa-solid fa-glasses"></i></div>
+            <div class="product-body">
+              <div class="product-name">Kacamata Blue Light</div>
+              <div class="product-sku">SKU: KAC-007</div>
+              <span class="badge badge-success">Active</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 199.000</span>
+                <span class="product-stock ok">Stok: 34</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card" data-status="draft" data-category="Fashion">
+            <div class="product-img"><i class="fa-solid fa-shirt"></i></div>
+            <div class="product-body">
+              <div class="product-name">Jaket Hoodie Limited</div>
+              <div class="product-sku">SKU: JKT-008</div>
+              <span class="badge badge-gray">Draft</span>
+              <div class="product-meta">
+                <span class="product-price">Rp 279.000</span>
+                <span class="product-stock ok">Stok: 0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- List View -->
+        <div class="table-responsive table-list-view" id="productList">
+          <table class="table">
+            <thead>
+              <tr><th>Produk</th><th>SKU</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Status</th><th style="width:80px">Aksi</th></tr>
+            </thead>
+            <tbody>
+              <tr data-status="active"><td>Wireless Headphone Pro</td><td>WHP-001</td><td>Elektronik</td><td>Rp 899.000</td><td>45</td><td><span class="badge badge-success">Active</span></td><td><button class="btn btn-secondary btn-sm" onclick="showToast('Edit produk')">Edit</button></td></tr>
+              <tr data-status="active"><td>Mechanical Keyboard RGB</td><td>MKB-002</td><td>Elektronik</td><td>Rp 1.250.000</td><td>28</td><td><span class="badge badge-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Edit</button></td></tr>
+              <tr data-status="active"><td>Monitor 27" 4K IPS</td><td>MON-003</td><td>Elektronik</td><td>Rp 4.500.000</td><td>12</td><td><span class="badge badge-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Edit</button></td></tr>
+              <tr data-status="active"><td>Smartwatch Series 5</td><td>SWT-004</td><td>Aksesoris</td><td>Rp 2.199.000</td><td class="text-danger font-bold">3</td><td><span class="badge badge-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Edit</button></td></tr>
+              <tr data-status="active"><td>Ransel Premium Urban</td><td>BAG-005</td><td>Fashion</td><td>Rp 349.000</td><td>67</td><td><span class="badge badge-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Edit</button></td></tr>
+              <tr data-status="active"><td>Coffee Beans Arabica</td><td>COF-006</td><td>Makanan</td><td>Rp 89.000</td><td>120</td><td><span class="badge badge-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Edit</button></td></tr>
+              <tr data-status="active"><td>Kacamata Blue Light</td><td>KAC-007</td><td>Aksesoris</td><td>Rp 199.000</td><td>34</td><td><span class="badge badge-success">Active</span></td><td><button class="btn btn-secondary btn-sm">Edit</button></td></tr>
+              <tr data-status="draft"><td>Jaket Hoodie Limited</td><td>JKT-008</td><td>Fashion</td><td>Rp 279.000</td><td>0</td><td><span class="badge badge-gray">Draft</span></td><td><button class="btn btn-secondary btn-sm">Edit</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Product Modal -->
+  <div class="modal-backdrop" id="modalProduct">
+    <div class="modal">
+      <div class="modal-header"><h3 id="modalProductTitle">Tambah Produk</h3><button onclick="closeModal('modalProduct')"><i class="fa-solid fa-xmark"></i></button></div>
+      <div class="modal-body">
+        <div class="grid-2">
+          <div class="form-group"><label class="form-label">Nama Produk</label><input class="form-control" id="productNameInput" placeholder="Nama produk"></div>
+          <div class="form-group"><label class="form-label">SKU</label><input class="form-control" id="productSkuInput" placeholder="SKU-001"></div>
+          <div class="form-group"><label class="form-label">Kategori</label><select class="form-control" id="productCategoryInput"><option>Elektronik</option><option>Fashion</option><option>Makanan</option><option>Aksesoris</option></select></div>
+          <div class="form-group"><label class="form-label">Harga</label><input class="form-control" id="productPriceInput" placeholder="Rp" type="number"></div>
+          <div class="form-group"><label class="form-label">Stok</label><input class="form-control" id="productStockInput" placeholder="0" type="number"></div>
+          <div class="form-group"><label class="form-label">Status</label><select class="form-control" id="productStatusInput"><option>Active</option><option>Draft</option></select></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('modalProduct')">Batal</button>
+        <button class="btn btn-primary" onclick="saveProduct()">Simpan Produk</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="command-backdrop" id="commandPalette"><div class="command-modal"><div class="command-input"><i class="fa-solid fa-magnifying-glass"></i><input id="commandSearch" placeholder="Cari menu, user, invoice, action..." oninput="renderCommandItems()"><button onclick="closeCommandPalette()"><i class="fa-solid fa-xmark"></i></button></div><div class="command-list" id="commandList"></div><div class="command-footer"><span>Shortcut: Ctrl + K</span><span>Enter untuk pilih • Esc untuk tutup</span></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+  <script>
+    let currentProductFilter = 'all';
+
+    function switchProductView(mode) {
+      document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+      if (mode === 'grid') {
+        document.querySelector('.view-toggle button:first-child').classList.add('active');
+        document.getElementById('productGrid').classList.remove('hidden');
+        document.getElementById('productList').classList.remove('active');
+      } else {
+        document.querySelector('.view-toggle button:last-child').classList.add('active');
+        document.getElementById('productGrid').classList.add('hidden');
+        document.getElementById('productList').classList.add('active');
+      }
+    }
+
+    function filterProducts(filter, el) {
+      currentProductFilter = filter;
+      document.querySelectorAll('.stat-filters .stat-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        const status = card.dataset.status;
+        const stockText = card.querySelector('.product-stock')?.textContent || '';
+        const stockNum = parseInt(stockText.replace(/\D/g,'')) || 0;
+        if (filter === 'all') card.style.display = '';
+        else if (filter === 'active') card.style.display = status === 'active' ? '' : 'none';
+        else if (filter === 'draft') card.style.display = status === 'draft' ? '' : 'none';
+        else if (filter === 'low') card.style.display = stockNum > 0 && stockNum <= 5 ? '' : 'none';
+      });
+
+      document.querySelectorAll('#productList tbody tr').forEach(row => {
+        const status = row.dataset.status;
+        const stockText = row.querySelector('td:nth-child(5)')?.textContent || '0';
+        const stockNum = parseInt(stockText.replace(/\D/g,'')) || 0;
+        if (filter === 'all') row.style.display = '';
+        else if (filter === 'active') row.style.display = status === 'active' ? '' : 'none';
+        else if (filter === 'draft') row.style.display = status === 'draft' ? '' : 'none';
+        else if (filter === 'low') row.style.display = stockNum > 0 && stockNum <= 5 ? '' : 'none';
+      });
+    }
+
+    function filterByCategory(cat) {
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (!cat || card.dataset.category === cat) card.style.display = '';
+        else card.style.display = 'none';
+      });
+      document.querySelectorAll('#productList tbody tr').forEach(row => {
+        const catCell = row.querySelector('td:nth-child(3)')?.textContent || '';
+        if (!cat || catCell === cat) row.style.display = '';
+        else row.style.display = 'none';
+      });
+    }
+
+    function searchProducts() {
+      const q = document.getElementById('productSearch').value.toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const name = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
+        card.style.display = name.includes(q) ? '' : 'none';
+      });
+      document.querySelectorAll('#productList tbody tr').forEach(row => {
+        const name = row.querySelector('td:first-child')?.textContent.toLowerCase() || '';
+        row.style.display = name.includes(q) ? '' : 'none';
+      });
+    }
+
+    function openProductModal() {
+      document.getElementById('modalProductTitle').textContent = 'Tambah Produk';
+      document.getElementById('productNameInput').value = '';
+      document.getElementById('productSkuInput').value = '';
+      document.getElementById('productPriceInput').value = '';
+      document.getElementById('productStockInput').value = '';
+      openModal('modalProduct');
+    }
+
+    function saveProduct() {
+      const name = document.getElementById('productNameInput').value;
+      if (!name) { showToast('Nama produk harus diisi'); return; }
+      closeModal('modalProduct');
+      showToast('Produk "' + name + '" berhasil disimpan');
+    }
+  </script>
+</body>
+</html>

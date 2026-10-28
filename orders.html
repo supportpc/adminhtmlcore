@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orders / Tickets - NusaCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+<div class="sidebar-logo">
+        <div class="brand-wrapper">
+          <div class="logo-icon">A</div>
+          <div class="brand-text"><div class="logo-text">NusaCore</div><div class="logo-sub">Complete Panel Kit</div></div>
+        </div>
+        <button id="sidebarToggle" class="btn btn-secondary btn-icon" title="Collapse sidebar"><i class="fa-solid fa-bars top-icon"></i></button>
+      </div>
+            <p class="menu-title">Main</p>
+      <nav>
+        <a class="nav-item" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span class="nav-text">Dashboard</span></a>
+        <a class="nav-item" href="users.html"><i class="fa-solid fa-users nav-icon"></i><span class="nav-text">User Management</span><span class="nav-pill">12</span></a>
+        <a class="nav-item" href="roles.html"><i class="fa-solid fa-shield-halved nav-icon"></i><span class="nav-text">Role &amp; Permission</span></a>
+        <a class="nav-item" href="products.html"><i class="fa-solid fa-boxes-stacked nav-icon"></i><span class="nav-text">Products / Catalog</span></a>
+        <a class="nav-item active" href="orders.html"><i class="fa-solid fa-truck nav-icon"></i><span class="nav-text">Orders / Tickets</span></a>
+        <a class="nav-item" href="transactions.html"><i class="fa-solid fa-credit-card nav-icon"></i><span class="nav-text">Transactions</span></a>
+        <a class="nav-item" href="billing.html"><i class="fa-solid fa-wallet nav-icon"></i><span class="nav-text">Billing</span></a>
+        <a class="nav-item" href="advanced-forms.html"><i class="fa-solid fa-pen-to-square nav-icon"></i><span class="nav-text">Advanced Forms</span></a>
+        <a class="nav-item" href="datatables.html"><i class="fa-solid fa-table-list nav-icon"></i><span class="nav-text">DataTables</span></a>
+      </nav>
+      <p class="menu-title">Operational</p>
+      <nav>
+        <a class="nav-item" href="notifications.html"><i class="fa-solid fa-bell nav-icon"></i><span class="nav-text">Notifications</span><span class="nav-pill">5</span></a>
+        <a class="nav-item" href="file-manager.html"><i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">File Manager</span></a>
+        <a class="nav-item" href="reports.html"><i class="fa-solid fa-chart-line nav-icon"></i><span class="nav-text">Reports</span></a>
+        <a class="nav-item" href="audit.html"><i class="fa-solid fa-clipboard-list nav-icon"></i><span class="nav-text">Audit Log</span></a>
+      </nav>
+      <p class="menu-title">System</p>
+      <nav>
+        <a class="nav-item" href="settings.html"><i class="fa-solid fa-gear nav-icon"></i><span class="nav-text">Settings</span></a>
+        <a class="nav-item" href="profile.html"><i class="fa-solid fa-user-gear nav-icon"></i><span class="nav-text">Profile</span></a>
+        <a class="nav-item" href="api-integrations.html"><i class="fa-solid fa-plug nav-icon"></i><span class="nav-text">API &amp; Integrations</span></a>
+        <a class="nav-item" href="docs.html"><i class="fa-solid fa-book nav-icon"></i><span class="nav-text">Docs</span></a>
+      </nav>
+      <p class="menu-title">Showcase</p>
+      <nav>
+        <a class="nav-item" href="components.html"><i class="fa-solid fa-layer-group nav-icon"></i><span class="nav-text">UI Components</span></a>
+        <a class="nav-item" href="auth.html"><i class="fa-solid fa-right-to-bracket nav-icon"></i><span class="nav-text">Auth Pages</span></a>
+        <a class="nav-item" href="states.html"><i class="fa-solid fa-spinner nav-icon"></i><span class="nav-text">Loading States</span></a>
+        <a class="nav-item" href="layouts.html"><i class="fa-solid fa-window-restore nav-icon"></i><span class="nav-text">Layout Variants</span></a>
+        <a class="nav-item" href="onboarding.html"><i class="fa-solid fa-route nav-icon"></i><span class="nav-text">Onboarding Wizard</span></a>
+        <a class="nav-item" href="error-pages.html"><i class="fa-solid fa-triangle-exclamation nav-icon"></i><span class="nav-text">Error Pages</span></a>
+      </nav>
+    </div>
+  </aside>
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <main class="main-wrapper">
+    <div class="main-container">
+      <header class="topbar">
+        <div class="flex items-center gap-3">
+          <button id="topbarToggle" class="btn btn-secondary btn-icon"><i class="fa-solid fa-bars top-icon"></i></button>
+          <div class="breadcrumb"><span>Admin</span><span>/</span><span class="current" id="breadcrumb-current">Orders / Tickets</span></div>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-secondary btn-icon hide-mobile" onclick="openCommandPalette()"><i class="fa-solid fa-magnifying-glass top-icon"></i></button>
+          <button class="btn btn-secondary theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fa-solid fa-moon top-icon" id="themeIcon"></i><span id="themeText">Dark</span></button>
+          <button class="btn btn-secondary btn-icon" onclick="goTo('page-notifications','Notifications')"><i class="fa-solid fa-bell top-icon"></i></button>
+          <div class="user-profile" onclick="goTo('page-profile','Profile')"><img src="https://ui-avatars.com/api/?name=Admin+User&background=2563eb&color=fff" alt="Admin"><span class="text-sm font-bold">Admin User</span></div>
+        </div>
+      </header>
+      <div class="inner-content">
+<section id="page-orders" class="page-view active">
+
+          <div class="page-head"><div><h1 class="page-title">Orders / Tickets</h1><p class="page-desc">Contoh board untuk request, tiket support, order fulfillment, atau task operasional.</p></div><button class="btn btn-primary" onclick="showToast('Ticket baru dibuat')">+ Ticket</button></div>
+          <div class="kanban"><div class="kanban-col"><b>Backlog</b><div class="ticket"><b>Verifikasi dokumen merchant</b><p class="text-xs text-muted mt-2">Priority medium</p></div><div class="ticket"><b>Update template invoice</b><p class="text-xs text-muted mt-2">Design request</p></div></div><div class="kanban-col"><b>In Progress</b><div class="ticket"><b>Integrasi callback payment</b><p class="text-xs text-muted mt-2">Assigned to Dev Team</p></div></div><div class="kanban-col"><b>Review</b><div class="ticket"><b>Audit role cashier</b><p class="text-xs text-muted mt-2">Need approval</p></div></div><div class="kanban-col"><b>Done</b><div class="ticket"><b>Fix login session</b><p class="text-xs text-muted mt-2">Closed yesterday</p></div></div></div>
+        
+        </section>
+
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="modalUser"><div class="modal"><div class="modal-header"><h3 id="modalUserTitle">Tambah User</h3><button onclick="closeModal('modalUser')"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="grid-2"><div class="form-group"><label class="form-label">Nama Lengkap</label><input class="form-control" id="userNameInput" placeholder="Nama user"></div><div class="form-group"><label class="form-label">Email</label><input class="form-control" id="userEmailInput" placeholder="email@example.com"></div><div class="form-group"><label class="form-label">Role</label><select class="form-control" id="userRoleInput"><option>Admin</option><option>Cashier</option><option>Operator</option><option>Super Admin</option></select></div><div class="form-group"><label class="form-label">Area</label><input class="form-control" id="userAreaInput" placeholder="Opsional / Global"></div><div class="form-group"><label class="form-label">Status</label><select class="form-control" id="userStatusInput"><option>Active</option><option>Pending</option><option>Banned</option></select></div></div><div class="alert alert-info">Untuk backend, form ini tinggal dihubungkan ke endpoint create/update user.</div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modalUser')">Batal</button><button class="btn btn-primary" onclick="saveUser()">Simpan</button></div></div></div>
+  <div class="modal-backdrop" id="modalQuickCreate"><div class="modal"><div class="modal-header"><h3>Quick Create</h3><button onclick="closeModal('modalQuickCreate')"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="grid-3"><button class="quick-action" onclick="closeModal('modalQuickCreate');openUserModal()"><b><i class="fa-solid fa-user-plus"></i> User</b><span>›</span></button><button class="quick-action" onclick="showToast('Invoice dibuat')"><b><i class="fa-solid fa-file-invoice-dollar"></i> Invoice</b><span>›</span></button><button class="quick-action" onclick="showToast('Ticket dibuat')"><b><i class="fa-solid fa-ticket"></i> Ticket</b><span>›</span></button></div></div></div></div>
+  <div class="modal-backdrop" id="modalNotification"><div class="modal"><div class="modal-header"><h3>Buat Notifikasi</h3><button onclick="closeModal('modalNotification')"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="form-group"><label class="form-label">Judul</label><input class="form-control" placeholder="Judul notifikasi"></div><div class="form-group"><label class="form-label">Target</label><select class="form-control"><option>Semua user</option><option>Admin only</option><option>Cashier only</option></select></div><div class="form-group"><label class="form-label">Pesan</label><textarea class="form-control" rows="4" placeholder="Isi pesan..."></textarea></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modalNotification')">Batal</button><button class="btn btn-primary" onclick="closeModal('modalNotification');showToast('Notifikasi dikirim')">Kirim</button></div></div></div>
+  <div class="command-backdrop" id="commandPalette"><div class="command-modal"><div class="command-input"><i class="fa-solid fa-magnifying-glass"></i><input id="commandSearch" placeholder="Cari menu, user, invoice, action..." oninput="renderCommandItems()"><button onclick="closeCommandPalette()"><i class="fa-solid fa-xmark"></i></button></div><div class="command-list" id="commandList"></div><div class="command-footer"><span>Shortcut: Ctrl + K</span><span>Enter untuk pilih • Esc untuk tutup</span></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

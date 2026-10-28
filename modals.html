@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modals - NusaCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+<div class="sidebar-logo">
+        <div class="brand-wrapper">
+          <div class="logo-icon">A</div>
+          <div class="brand-text"><div class="logo-text">NusaCore</div><div class="logo-sub">Complete Panel Kit</div></div>
+        </div>
+        <button id="sidebarToggle" class="btn btn-secondary btn-icon" title="Collapse sidebar"><i class="fa-solid fa-bars top-icon"></i></button>
+      </div>
+            <p class="menu-title">Main</p>
+      <nav>
+        <a class="nav-item" href="dashboard.html"><i class="fa-solid fa-house nav-icon"></i><span class="nav-text">Dashboard</span></a>
+        <a class="nav-item" href="users.html"><i class="fa-solid fa-users nav-icon"></i><span class="nav-text">User Management</span><span class="nav-pill">12</span></a>
+        <a class="nav-item" href="roles.html"><i class="fa-solid fa-shield-halved nav-icon"></i><span class="nav-text">Role &amp; Permission</span></a>
+        <a class="nav-item" href="products.html"><i class="fa-solid fa-boxes-stacked nav-icon"></i><span class="nav-text">Products / Catalog</span></a>
+        <a class="nav-item" href="orders.html"><i class="fa-solid fa-truck nav-icon"></i><span class="nav-text">Orders / Tickets</span></a>
+        <a class="nav-item" href="transactions.html"><i class="fa-solid fa-credit-card nav-icon"></i><span class="nav-text">Transactions</span></a>
+        <a class="nav-item" href="billing.html"><i class="fa-solid fa-wallet nav-icon"></i><span class="nav-text">Billing</span></a>
+        <a class="nav-item" href="advanced-forms.html"><i class="fa-solid fa-pen-to-square nav-icon"></i><span class="nav-text">Advanced Forms</span></a>
+        <a class="nav-item" href="datatables.html"><i class="fa-solid fa-table-list nav-icon"></i><span class="nav-text">DataTables</span></a>
+      </nav>
+      <p class="menu-title">Operational</p>
+      <nav>
+        <a class="nav-item" href="notifications.html"><i class="fa-solid fa-bell nav-icon"></i><span class="nav-text">Notifications</span><span class="nav-pill">5</span></a>
+        <a class="nav-item" href="file-manager.html"><i class="fa-solid fa-folder-open nav-icon"></i><span class="nav-text">File Manager</span></a>
+        <a class="nav-item" href="reports.html"><i class="fa-solid fa-chart-line nav-icon"></i><span class="nav-text">Reports</span></a>
+        <a class="nav-item" href="audit.html"><i class="fa-solid fa-clipboard-list nav-icon"></i><span class="nav-text">Audit Log</span></a>
+      </nav>
+      <p class="menu-title">System</p>
+      <nav>
+        <a class="nav-item" href="settings.html"><i class="fa-solid fa-gear nav-icon"></i><span class="nav-text">Settings</span></a>
+        <a class="nav-item" href="profile.html"><i class="fa-solid fa-user-gear nav-icon"></i><span class="nav-text">Profile</span></a>
+        <a class="nav-item" href="api-integrations.html"><i class="fa-solid fa-plug nav-icon"></i><span class="nav-text">API &amp; Integrations</span></a>
+        <a class="nav-item" href="docs.html"><i class="fa-solid fa-book nav-icon"></i><span class="nav-text">Docs</span></a>
+      </nav>
+      <p class="menu-title">Showcase</p>
+      <nav>
+        <a class="nav-item" href="components.html"><i class="fa-solid fa-layer-group nav-icon"></i><span class="nav-text">UI Components</span></a>
+        <a class="nav-item" href="auth.html"><i class="fa-solid fa-right-to-bracket nav-icon"></i><span class="nav-text">Auth Pages</span></a>
+        <a class="nav-item" href="states.html"><i class="fa-solid fa-spinner nav-icon"></i><span class="nav-text">Loading States</span></a>
+        <a class="nav-item" href="layouts.html"><i class="fa-solid fa-window-restore nav-icon"></i><span class="nav-text">Layout Variants</span></a>
+        <a class="nav-item" href="onboarding.html"><i class="fa-solid fa-route nav-icon"></i><span class="nav-text">Onboarding Wizard</span></a>
+        <a class="nav-item" href="error-pages.html"><i class="fa-solid fa-triangle-exclamation nav-icon"></i><span class="nav-text">Error Pages</span></a>
+      </nav>
+    </div>
+  </aside>
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <main class="main-wrapper">
+    <div class="main-container">
+      <header class="topbar">
+        <div class="flex items-center gap-3">
+          <button id="topbarToggle" class="btn btn-secondary btn-icon"><i class="fa-solid fa-bars top-icon"></i></button>
+          <div class="breadcrumb"><span>Admin</span><span>/</span><span class="current" id="breadcrumb-current">Modals</span></div>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-secondary btn-icon hide-mobile" onclick="openCommandPalette()"><i class="fa-solid fa-magnifying-glass top-icon"></i></button>
+          <button class="btn btn-secondary theme-toggle" id="themeToggle" onclick="toggleTheme()"><i class="fa-solid fa-moon top-icon" id="themeIcon"></i><span id="themeText">Dark</span></button>
+          <button class="btn btn-secondary btn-icon" onclick="goTo('page-notifications','Notifications')"><i class="fa-solid fa-bell top-icon"></i></button>
+          <div class="user-profile" onclick="goTo('page-profile','Profile')"><img src="https://ui-avatars.com/api/?name=Admin+User&background=2563eb&color=fff" alt="Admin"><span class="text-sm font-bold">Admin User</span></div>
+        </div>
+      </header>
+      <div class="inner-content">
+<section id="page-modals" class="page-view active">
+
+        <div class="page-head"><div><h1 class="page-title">Modals</h1><p class="page-desc">Demo berbagai jenis modal dan notifikasi toast untuk implementasi.</p></div></div>
+        <div class="grid-main">
+          <div class="card"><div class="card-header">Default Modal</div><div class="card-body"><p class="text-sm text-muted mb-3">Modal standar dengan header, body, dan footer. Cocok untuk konfirmasi sederhana atau menampilkan informasi.</p><div class="flex gap-2 flex-wrap"><button class="btn btn-primary" onclick="openModal('demoModalDefault')">Open Modal</button></div></div></div>
+          <div class="card"><div class="card-header">Confirmation Modal</div><div class="card-body"><p class="text-sm text-muted mb-3">Modal konfirmasi dengan aksi berbahaya (border merah). Cocok untuk delete, suspend, atau aksi irreversible.</p><div class="flex gap-2 flex-wrap"><button class="btn btn-danger" onclick="openModal('demoModalConfirm')">Open Confirm</button></div></div></div>
+          <div class="card"><div class="card-header">Form Modal</div><div class="card-body"><p class="text-sm text-muted mb-3">Modal dengan form input. Berguna untuk quick create/edit data tanpa pindah halaman.</p><div class="flex gap-2 flex-wrap"><button class="btn btn-primary" onclick="openModal('demoModalForm')">Open Form</button></div></div></div>
+          <div class="card"><div class="card-header">Large Modal</div><div class="card-body"><p class="text-sm text-muted mb-3">Modal ukuran besar untuk konten yang lebih banyak seperti detail item atau form kompleks.</p><div class="flex gap-2 flex-wrap"><button class="btn btn-primary" onclick="openModal('demoModalLarge')">Open Large</button></div></div></div>
+          <div class="card"><div class="card-header">Toast Notifications</div><div class="card-body"><p class="text-sm text-muted mb-3">Toast notifikasi dengan berbagai tipe: success, error, warning, info. Auto dismiss 4 detik.</p><div class="flex gap-2 flex-wrap"><button class="btn btn-success" onclick="showToastVariant('success','Data berhasil disimpan!')">Success</button><button class="btn btn-danger" onclick="showToastVariant('error','Gagal memproses data.')">Error</button><button class="btn btn-warning" onclick="showToastVariant('warning','Perhatikan batas kuota anda.')">Warning</button><button class="btn btn-primary" onclick="showToastVariant('info','Maintenance malam ini pukul 23:00.')">Info</button></div></div></div>
+        </div>
+        
+      </section>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="demoModalDefault"><div class="modal"><div class="modal-header"><h3>Konfirmasi Aksi</h3><button onclick="closeModal('demoModalDefault')"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><p class="text-sm text-muted">Apakah anda yakin ingin melanjutkan aksi ini? Tindakan ini dapat diproses lebih lanjut oleh sistem dan akan tercatat di audit log.</p></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('demoModalDefault')">Batal</button><button class="btn btn-primary" onclick="closeModal('demoModalDefault');showToast('Aksi dikonfirmasi')">Konfirmasi</button></div></div></div>
+  <div class="modal-backdrop" id="demoModalConfirm"><div class="modal" style="border-top:4px solid var(--danger);width:min(450px,100%)"><div class="modal-header"><h3 style="color:var(--danger)">Hapus Data</h3><button onclick="closeModal('demoModalConfirm')"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-triangle-exclamation" style="font-size:28px;color:var(--danger);flex-shrink:0"></i><p class="text-sm">Data yang sudah dihapus tidak dapat dikembalikan. Pastikan anda telah membackup data penting sebelum melanjutkan.</p></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('demoModalConfirm')">Batal</button><button class="btn btn-danger" onclick="closeModal('demoModalConfirm');showToast('Data berhasil dihapus')">Ya, Hapus</button></div></div></div>
+  <div class="modal-backdrop" id="demoModalForm"><div class="modal" style="width:min(540px,100%)"><div class="modal-header"><h3>Tambah Data Baru</h3><button onclick="closeModal('demoModalForm')"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="form-group"><label class="form-label">Nama</label><input class="form-control" placeholder="Masukkan nama"></div><div class="form-group"><label class="form-label">Deskripsi</label><textarea class="form-control" rows="3" placeholder="Deskripsi..."></textarea></div><div class="form-group"><label class="form-label">Kategori</label><select class="form-control"><option>Umum</option><option>Prioritas</option><option>Internal</option></select></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('demoModalForm')">Batal</button><button class="btn btn-primary" onclick="closeModal('demoModalForm');showToast('Data berhasil disimpan')">Simpan</button></div></div></div>
+  <div class="modal-backdrop" id="demoModalLarge"><div class="modal" style="width:min(860px,95%);max-height:85vh"><div class="modal-header"><h3>Detail Lengkap</h3><button onclick="closeModal('demoModalLarge')"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><p class="text-sm text-muted mb-3">Modal ini menampung konten yang lebih banyak. Berguna untuk detail item, preview data, atau form kompleks dengan banyak field.</p><div class="grid-2"><div class="form-group"><label class="form-label">Field 1</label><input class="form-control" value="Sample data"></div><div class="form-group"><label class="form-label">Field 2</label><input class="form-control" value="Sample data"></div><div class="form-group"><label class="form-label">Field 3</label><input class="form-control" value="Sample data"></div><div class="form-group"><label class="form-label">Field 4</label><input class="form-control" value="Sample data"></div><div class="form-group"><label class="form-label">Field 5</label><input class="form-control" value="Sample data"></div><div class="form-group"><label class="form-label">Field 6</label><input class="form-control" value="Sample data"></div></div><div class="alert alert-info">Modal ini mendukung scroll penuh ketika konten melebihi batas layar.</div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('demoModalLarge')">Tutup</button></div></div></div>
+  <div class="command-backdrop" id="commandPalette"><div class="command-modal"><div class="command-input"><i class="fa-solid fa-magnifying-glass"></i><input id="commandSearch" placeholder="Cari menu, user, invoice, action..." oninput="renderCommandItems()"><button onclick="closeCommandPalette()"><i class="fa-solid fa-xmark"></i></button></div><div class="command-list" id="commandList"></div><div class="command-footer"><span>Shortcut: Ctrl + K</span><span>Enter untuk pilih • Esc untuk tutup</span></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+  <script>
+    function showToastVariant(type, message) {
+      var icons = {success:'fa-check-circle',error:'fa-circle-xmark',warning:'fa-triangle-exclamation',info:'fa-circle-info'};
+      var c = document.getElementById('toastVariantContainer');
+      if(!c){c=document.createElement('div');c.id='toastVariantContainer';c.style.cssText='position:fixed;right:16px;bottom:16px;z-index:200;display:flex;flex-direction:column;gap:6px';document.body.appendChild(c)}
+      var e=document.createElement('div');e.className='toast-variant toast-'+type;
+      e.innerHTML='<i class="fa-solid '+(icons[type]||'fa-circle-info')+'"></i> '+message+' <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:inherit;cursor:pointer;font-size:16px">&times;</button>';
+      c.appendChild(e);
+      setTimeout(function(){if(e&&e.parentElement){e.style.opacity='0';e.style.transition='opacity .3s';setTimeout(function(){if(e&&e.parentElement)e.remove()},300)}},4000);
+    }
+  </script>
+</body>
+</html>
